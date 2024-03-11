@@ -43,7 +43,7 @@ class Authenticator(dns_common.DNSAuthenticator):
 
     @staticmethod
     def _get_zone(domain):
-        zone_name = tldextract.extract(domain)
+        zone_name = tldextract.extract(domain, include_psl_private_domains=True)
         return '.'.join([zone_name.domain, zone_name.suffix])
 
     def _perform(self, domain, validation_name, validation):
